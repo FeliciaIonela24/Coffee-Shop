@@ -7,16 +7,16 @@
     <h2>Înregistrare</h2>
 
     <form method="POST" class="auth-form">
-      <label for="username">Nume utilizator:</label>
+      <label for="username">Username:</label>
       <input type="text" name="username" required>
 
-      <label for="password">Parolă:</label>
+      <label for="password">Password:</label>
       <input type="password" name="password" required>
 
-      <button type="submit">Înregistrează-te</button>
+      <button type="submit">Sign up</button>
     </form>
 
-    <p>Ai deja un cont? <a href="{{ url_for('main.login') }}">Autentifică-te</a></p>
+    <p>You already have an account? <a href="{{ url_for('main.login') }}">Login</a></p>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}

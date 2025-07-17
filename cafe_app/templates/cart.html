@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Coș de cumpărături{% endblock %}
+{% block title %}Shopping Cart{% endblock %}
 
 {% block content %}
 <div class="cart-container">
-  <h2>Coșul tău</h2>
+  <h2>Your cart</h2>
 
   {% if cart_items %}
     <ul class="cart-list">
@@ -15,7 +15,7 @@
             <span>{{ "%.2f"|format(item.product.price) }} RON</span>
           </div>
           <form method="POST" action="{{ url_for('main.remove_from_cart', item_id=item.id) }}">
-            <button type="submit" class="btn-danger">Șterge</button>
+            <button type="submit" class="btn-danger">Delete</button>
           </form>
         </li>
       {% endfor %}
@@ -23,10 +23,10 @@
 
     <div class="cart-summary">
       <p><strong>Total:</strong> {{ "%.2f"|format(total) }} RON</p>
-      <a class="btn btn-primary" href="{{ url_for('main.receipt') }}">Generează Bon</a>
+      <a class="btn btn-primary" href="{{ url_for('main.receipt') }}">Generate Receip</a>
     </div>
   {% else %}
-    <p>Coșul este gol.</p>
+    <p>Cart is empty.</p>
   {% endif %}
 </div>
 {% endblock %}

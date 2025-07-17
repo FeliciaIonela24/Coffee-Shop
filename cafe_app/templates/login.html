@@ -4,7 +4,7 @@
 
 {% block content %}
   <div class="auth-container">
-    <h2>Autentificare</h2>
+    <h2>Authentication</h2>
 
     <form method="POST" class="auth-form">
       <label for="username">Username:</label>
@@ -16,7 +16,7 @@
       <button type="submit">Login</button>
     </form>
 
-    <p>Nu ai cont? <a href="{{ url_for('main.register') }}">Înregistrează-te aici</a></p>
+    <p>Nu ai cont? <a href="{{ url_for('main.register') }}">Register here </a></p>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}

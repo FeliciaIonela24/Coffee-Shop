@@ -10,9 +10,9 @@
     <h1>Cafe Shop</h1>
     <nav>
       <ul>
-        <li><a href="{{ url_for('main.products') }}">Meniu</a></li>
-        <li><a href="{{ url_for('main.view_cart') }}">Coș</a></li>
-        <li><a href="{{ url_for('main.receipt') }}">Bon</a></li>
+        <li><a href="{{ url_for('main.products') }}">Menu</a></li>
+        <li><a href="{{ url_for('main.view_cart') }}">Cart</a></li>
+        <li><a href="{{ url_for('main.receipt') }}">Receipt</a></li>
         {% if current_user.is_authenticated %}
           <li><a href="{{ url_for('main.logout') }}">Logout ({{ current_user.username }})</a></li>
         {% else %}

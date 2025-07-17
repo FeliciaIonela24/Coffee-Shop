@@ -8,7 +8,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     
-    # Relație cu coșul (cart items)
+     # Relationship with the cart(cart items)
     cart_items = db.relationship('CartItem', backref='user', lazy=True)
 
 class Product(db.Model):
@@ -16,7 +16,7 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    # Relație cu coșul
+  # Relationship with the cart
     cart_items = db.relationship('CartItem', backref='product', lazy=True)
 
 class CartItem(db.Model):
@@ -33,7 +33,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     
-    # Relație cu coșul (cart items)
+   # Relationship with the cart
     cart_items = db.relationship('CartItem', backref='user', lazy=True)
 
 class Product(db.Model):
@@ -41,7 +41,7 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    # Relație cu coșul
+  # Relationship with the cart
     cart_items = db.relationship('CartItem', backref='product', lazy=True)
 
 class CartItem(db.Model):

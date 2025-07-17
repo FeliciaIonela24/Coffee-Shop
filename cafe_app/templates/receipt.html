@@ -6,7 +6,7 @@
     <title>Receipt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
-        /* Stil special pentru bon */
+        /* receipt */
         .receipt-container {
             max-width: 600px;
             margin: 2rem auto;
@@ -100,8 +100,8 @@
         <p class="receipt-total">Total: {{ "%.2f"|format(total) }} RON</p>
 
         <div class="no-print">
-            <button onclick="window.print()">Tipărește bonul</button>
-            <a href="{{ url_for('main.products') }}" class="btn btn-primary">Înapoi la meniu</a>
+            <button onclick="window.print()">print receipt</button>
+            <a href="{{ url_for('main.products') }}" class="btn btn-primary">Back to menu</a>
         </div>
     </div>
 </body>
