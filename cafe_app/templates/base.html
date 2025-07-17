@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Cafe Shop{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Cafe Shop</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('main.products') }}">Meniu</a></li>
+        <li><a href="{{ url_for('main.view_cart') }}">Coș</a></li>
+        <li><a href="{{ url_for('main.receipt') }}">Bon</a></li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('main.logout') }}">Logout ({{ current_user.username }})</a></li>
+        {% else %}
+          <li><a href="{{ url_for('main.login') }}">Login</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cafe Shop</p>
+  </footer>
+</body>
+</html>

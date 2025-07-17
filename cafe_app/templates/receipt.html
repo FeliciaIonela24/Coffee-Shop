@@ -1,0 +1,108 @@
+<!-- templates/receipt.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Stil special pentru bon */
+        .receipt-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .receipt-header h2 {
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .receipt-info {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .receipt-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .receipt-table th,
+        .receipt-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .receipt-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .no-print {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h2>Bon Fiscal</h2>
+            <p>Cafe Shop</p>
+        </div>
+
+        <div class="receipt-info">
+            <p>Client: {{ current_user.username }}</p>
+            <p>Data: {{ current_date }}</p>
+        </div>
+
+        <table class="receipt-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Produs</th>
+                    <th>Preț</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ "%.2f"|format(item.product.price) }} RON</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p class="receipt-total">Total: {{ "%.2f"|format(total) }} RON</p>
+
+        <div class="no-print">
+            <button onclick="window.print()">Tipărește bonul</button>
+            <a href="{{ url_for('main.products') }}" class="btn btn-primary">Înapoi la meniu</a>
+        </div>
+    </div>
+</body>
+</html>
