@@ -134,7 +134,7 @@ def remove_from_cart(item_id):
 
 # Route to generate a receipt
 @bp.route('/receipt')
-@login_required
+@login_required #message for login
 def receipt():
     cart_items = CartItem.query.filter_by(user_id=current_user.id).all()
     total = sum(item.product.price for item in cart_items if item.product)

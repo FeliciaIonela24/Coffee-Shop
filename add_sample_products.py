@@ -4,7 +4,7 @@ from cafe_app.models import Product
 app = create_app()
 
 with app.app_context():
-    sample_products = [
+    sample_products = [ #list of products
         Product(name="Espresso", price=8.0),
         Product(name="Cappuccino", price=10.0),
         Product(name="Latte", price=11.5),
