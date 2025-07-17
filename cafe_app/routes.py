@@ -121,7 +121,7 @@ def view_cart():
 
 # Route to remove an item from the cart
 @bp.route('/remove-from-cart/<int:item_id>', methods=['POST'])
-@login_required
+@login_required #module to generate the login message 
 def remove_from_cart(item_id):
     item = CartItem.query.get_or_404(item_id)
     if item.user_id == current_user.id:

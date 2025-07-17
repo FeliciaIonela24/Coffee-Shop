@@ -4,9 +4,9 @@ $dbPath = "cafe_app\app.db"
 # Ștergere dacă există
 if (Test-Path $dbPath) {
     Remove-Item $dbPath
-    Write-Host " Baza de date a fost ștearsă."
+    Write-Host " Baza de date a fost stearsa."
 } else {
-    Write-Host "Baza de date nu a fost găsită."
+    Write-Host "Baza de date nu a fost gasita."
 }
 
 # Creare și populare
